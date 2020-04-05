@@ -50,6 +50,7 @@ def json_to_xml(response_json):
     if choice == 1:
         xml_name = input('Name the xml file to be created: \n')
         with open(xml_name+'.xml', 'w') as f:
+            #TODO: CHANGE to write XML and XML STR
             f.write(response_xml_str)
             print('Saved as '+xml_name+'.xml\n')
     else:
@@ -69,17 +70,17 @@ def json_to_csv():
     print('Saved as '+file_to_write+'.csv\n')
 
 
+"""Method to parse CSV to JSON and save locally"""
 def csv_to_json():
     file_to_open = input('Write the CSV file name to open:\n')
-    data = {}
+    json_file = input('Write the name of JSON file to be created:\n')
+    json_file_open = open(json_file, 'w')
     with open(file_to_open) as csv_f:
         csvReader = csv.DictReader(csv_f)
         for row in csvReader:
-           json.dump(row,file_to_open)
-           file_to_open.write('\n')
-    json_file = input('Write the name of JSON file to be created:\n')
-    with open(json_file, 'w') as json_f:
-        json_f.write(json.dumps(data, indent=4))
+            json.dump(row, json_file_open)
+            json_file_open.write(',')
+            json_file_open.write('\n')
     print('Saved as '+json_file+'.json\n')
 
 def xml_to_csv():
@@ -115,6 +116,6 @@ def main():
     json_save_file(response_json)
     print('\nParsing JSON to a CSV file\n')
     json_to_csv()
-   print('\nParsing CSV to a JSON file\n')
-   csv_to_json()
+    print('\nParsing CSV to a JSON file\n')
+    csv_to_json()
 main()

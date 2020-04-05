@@ -37,9 +37,13 @@ def xml_to_json():
     pp = pprint.PrettyPrinter(indent=4)
     pp.pprint(json.dumps(doc))
 
-
 """Method that parses JSON to XML"""
-def json_to_xml(response_json):
+def json_to_xml():
+    pass
+
+
+"""Method that parses JSON to XML String"""
+def json_to_xml_str(response_json):
     response_json = json_call(response_json)
     response_xml = dicttoxml.dicttoxml(response_json)
     print('The XML data: \n')
@@ -50,7 +54,6 @@ def json_to_xml(response_json):
     if choice == 1:
         xml_name = input('Name the xml file to be created: \n')
         with open(xml_name+'.xml', 'w') as f:
-            #TODO: CHANGE to write XML and XML STR
             f.write(response_xml_str)
             print('Saved as '+xml_name+'.xml\n')
     else:
@@ -84,7 +87,11 @@ def csv_to_json():
     print('Saved as '+json_file+'.json\n')
 
 def xml_to_csv():
-    pass
+    xml_name = input('Write an XML file name you want to convert: \n')
+    csv_name = input('Write an CSV file name to be created: \n')
+    xml_input = open(xml_name, 'r')
+    csv_output = open(csv_name, 'w')
+    
 
 def csv_to_xml():
     pass
@@ -108,8 +115,8 @@ def csv_to_xml():
     pass
 
 def main():
-    print('\nJSON to XML:\n')
-    json_to_xml(response_json)
+    print('\nJSON to XML String:\n')
+    json_to_xml_str(response_json)
     print('XML to JSON:\n')
     xml_to_json()
     print('\n\nSaving JSON file\n')
@@ -119,3 +126,4 @@ def main():
     print('\nParsing CSV to a JSON file\n')
     csv_to_json()
 main()
+

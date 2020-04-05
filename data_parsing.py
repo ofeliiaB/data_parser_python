@@ -107,14 +107,14 @@ def csv_to_xml():
     pass
 
 def main():
-   """ print('\nJSON to XML:\n')
+    print('\nJSON to XML:\n')
     json_to_xml(response_json)
     print('XML to JSON:\n')
     xml_to_json()
     print('\n\nSaving JSON file\n')
     json_save_file(response_json)
     print('\nParsing JSON to a CSV file\n')
-    json_to_csv()"""
+    json_to_csv()
    print('\nParsing CSV to a JSON file\n')
    csv_to_json()
 main()

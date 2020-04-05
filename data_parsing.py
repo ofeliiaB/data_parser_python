@@ -4,6 +4,8 @@ import json, csv, sys
 import requests
 import dicttoxml
 import pandas as pandas
+import xml.etree.ElementTree as ET
+
 
 
 response_json = ''
@@ -86,13 +88,17 @@ def csv_to_json():
             json_file_open.write('\n')
     print('Saved as '+json_file+'.json\n')
 
+"""Method to parse XML to CSV and save locally""""
 def xml_to_csv():
     xml_name = input('Write an XML file name you want to convert: \n')
     csv_name = input('Write an CSV file name to be created: \n')
     xml_input = open(xml_name, 'r')
     csv_output = open(csv_name, 'w')
+    tree = ET.parse(xml_name)
+    root = tree.getroot()
+    #TODO: method, not complete, no idea how to parse without
+    #ElementTree, cant do this blindly
     
-
 def csv_to_xml():
     pass
 
@@ -126,4 +132,5 @@ def main():
     print('\nParsing CSV to a JSON file\n')
     csv_to_json()
 main()
+
 
